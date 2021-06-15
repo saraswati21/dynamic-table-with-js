@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+	table
+	{
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+	}
+	td, th
+	{
+		border: 1px solid #cccccc;
+		padding: 8px;
+	}
+	th
+	{
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+	tr:nthh-child(even)
+	{
+		background-color: #dddddd;
+	}
+
+	tr:hover
+	{
+		background-color: black;
+		color: white;
+	}
+</style>
+<script>
+	let sortDirection = false;
+	let personData = 
+	[
+		{ name: 'Dylan', age: 31},
+		{ name: 'Christopher', age: 30},
+		{ name: 'Israel', age: 29},
+		{ name: 'ThugNasty', age: 14},
+		{ name: 'Dollan', age: 31},
+	];
+
+	window.onLoad = () =>
+	{
+		loadTableDate(personDate);
+	};
+
+	loadTableDate(personDate);
+	function loadTableDate(personDate)
+	{
+		const tableBody= document.getElementById(personDate);
+		let dataHTML = '';
+		for(let person of personDate) 
+		{
+			dataHTML += '<tr><td>${person.name}</td><td>$person.age<td></tr>';
+		}
+		console.log('dataHTML');
+		tableBody.innerHTML = dataHTML;
+	};
+
+	function sortColumn(columnName)
+	{
+		const dataType = typeof personDate[0][columnName];
+		sortDirection = !sortDirection;
+		switch(dataType)
+		{
+			case 'number': sortNumberColumn(sortDirection, columnName);
+			break;
+		}
+		loadTableDate(personDate);
+	}
+
+	function sortNumberColumn(sort, columnName)
+	{
+		tableDate = tableDate.sort((p1, p2) => 
+		{
+			return sort ? p1[columnName] - p2[columnName] : p2[columnName] - p1[columnName]
+		});
+	}
+</script>
+<head>
+	<title>Dynamic Table</title>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th onclick="sortColumn('age')">Age</th>
+			</tr>
+		</thead>
+		<tbody id="tableDate"></tbody>
+	</table>
+</body>
+</html>
