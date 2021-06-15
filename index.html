@@ -3,11 +3,20 @@
 <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <style>
+	body
+	{
+		padding: 20px;
+	}
 	table
 	{
 		font-family: arial, sans-serif;
 		border-collapse: collapse;
-		width: 100%;
+		width: 80%;
+	
+	}
+	thead
+	{
+		background-color: #ddddff;
 	}
 	td, th
 	{
@@ -20,14 +29,14 @@
 		text-transform: uppercase;
 	}
 
-	tr:nthh-child(even)
+	tr:nth-child(even)
 	{
 		background-color: #dddddd;
 	}
 
 	tr:hover
 	{
-		background-color: black;
+		background-color: gray;
 		color: white;
 	}
 </style>
@@ -54,7 +63,7 @@
 		let dataHtml = '';
 		for(let person of personData) 
 		{
-			dataHtml += `<tr><td>${person.name}</td><td>${person.age}<td></tr>`;
+			dataHtml += `<tr><td>${person.name}</td><td>${person.age}</td></tr>`;  
 		}
 		
 		tableBody.innerHTML = dataHtml;
@@ -84,7 +93,7 @@
 	<title>Dynamic Table</title>
 </head>
 <body>
-	<table>
+	<table >
 		<thead>
 			<tr>
 				<th>Name</th>
