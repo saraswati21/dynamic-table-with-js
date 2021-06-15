@@ -42,39 +42,39 @@
 		{ name: 'Dollan', age: 31},
 	];
 
-	window.onLoad = () =>
+	window.onload = () =>
 	{
-		loadTableDate(personDate);
+		loadTableDate(personData);
 	};
 
-	loadTableDate(personDate);
-	function loadTableDate(personDate)
+	
+	function loadTableDate(personData)
 	{
-		const tableBody= document.getElementById(personDate);
-		let dataHTML = '';
-		for(let person of personDate) 
+		const tableBody= document.getElementById('tableData');
+		let dataHtml = '';
+		for(let person of personData) 
 		{
-			dataHTML += '<tr><td>${person.name}</td><td>$person.age<td></tr>';
+			dataHtml += `<tr><td>${person.name}</td><td>${person.age}<td></tr>`;
 		}
-		console.log('dataHTML');
-		tableBody.innerHTML = dataHTML;
+		
+		tableBody.innerHTML = dataHtml;
 	};
 
 	function sortColumn(columnName)
 	{
-		const dataType = typeof personDate[0][columnName];
+		const dataType = typeof personData[0][columnName];
 		sortDirection = !sortDirection;
 		switch(dataType)
 		{
 			case 'number': sortNumberColumn(sortDirection, columnName);
 			break;
 		}
-		loadTableDate(personDate);
+		loadTableDate(personData);
 	}
 
 	function sortNumberColumn(sort, columnName)
 	{
-		tableDate = tableDate.sort((p1, p2) => 
+		personData = personData.sort((p1, p2) => 
 		{
 			return sort ? p1[columnName] - p2[columnName] : p2[columnName] - p1[columnName]
 		});
@@ -91,7 +91,7 @@
 				<th onclick="sortColumn('age')">Age</th>
 			</tr>
 		</thead>
-		<tbody id="tableDate"></tbody>
+		<tbody id="tableData"></tbody>
 	</table>
 </body>
 </html>
